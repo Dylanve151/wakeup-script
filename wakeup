@@ -1,0 +1,11 @@
+#!/bin/bash
+#WOL
+
+BROADCAST_IP="192.168.1.255"
+MAC_ADDRESS="FF:FF:FF:FF:FF:FF"
+TRIGGER_IP="192.168.1.100"
+
+wakeonlan -i $BROADCAST_IP $MAC_ADDRESS
+
+until ping -c1 $TRIGGER_IP &>/dev/null; do :; done
+echo "PC Online"
